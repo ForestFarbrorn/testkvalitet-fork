@@ -1,6 +1,13 @@
-from db import db
+from db import QuestionDB
 from models import Question
+from fastapi import FastAPI
 
+db = QuestionDB()
+db.initialize_db()
+
+app = FastAPI()
+
+@app.post("/questions/")
 def add_question(question_text: str):
     """Adds a new question"""
 
@@ -12,8 +19,10 @@ def add_question(question_text: str):
 
 def get_question(qid):
     """Gets a question for a given id"""
-    pass
+
+    return db.get_question(qid)
 
 def get_all_questions():
     """Returns all the questions in the database."""
-    pass
+    
+    return db.get_all_questions()

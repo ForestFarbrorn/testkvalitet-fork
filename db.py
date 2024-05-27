@@ -5,6 +5,7 @@ class QuestionDB:
     def __init__(self, filename = 'db.sqlite3') -> None:
         self.filename = filename
 
+    def initialize_db(self):
         conn = sqlite3.connect(self.filename)
         c = conn.cursor()
         c.execute('CREATE TABLE IF NOT EXISTS questions (qid INTEGER PRIMARY KEY, question TEXT, answer TEXT)')
@@ -35,4 +36,5 @@ class QuestionDB:
 
         return Question(qid=row[0], question_text=row[1], answer_text=row[2])
     
-db = QuestionDB()
+    def get_all_questions(self):
+        pass
