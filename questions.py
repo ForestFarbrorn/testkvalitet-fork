@@ -1,12 +1,5 @@
-from db import QuestionDB
-
-db = QuestionDB()
-
-class Question():
-    def __init__(self, qid: int, question_text: str, answer_text: str) -> None:
-        self.qid = qid
-        self.question_text = question_text
-        self.answer_text = answer_text
+from db import db
+from models import Question
 
 def add_question(question_text: str):
     """Adds a new question"""

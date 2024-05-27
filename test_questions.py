@@ -8,6 +8,7 @@ def test_add_question_returns_question_obj():
     assert isinstance(new_question, Question)
     assert new_question.question_text == 'Sample question'
 
+
 def test_add_question_calls_db(mocker):
     mock_db_instance = mocker.patch.object(QuestionDB, 'add_question')
 
