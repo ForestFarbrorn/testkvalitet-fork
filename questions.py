@@ -1,3 +1,4 @@
+from pydantic import BaseModel
 from db import QuestionDB
 from models import Question
 from fastapi import FastAPI
@@ -7,13 +8,20 @@ db.initialize_db()
 
 app = FastAPI()
 
+class QuestionCreate(BaseModel):
+    question_text: str
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
 @app.post("/questions/")
-def add_question(question_text: str):
+def add_question(question: QuestionCreate):
     """Adds a new question"""
 
-    question = Question(qid=0, question_text=question_text, answer_text="")
+    new_question = Question(qid=0, question_text=question.question_text, answer_text="")
 
-    db.add_question(question=question)
+    db.add_question(question=new_question)
 
     return question
 
