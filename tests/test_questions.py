@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock
-from questions import Question, QuestionCreate, add_question, get_all_questions, get_question
-from db import QuestionDB
+from questionapi.questions import Question, QuestionCreate, add_question, get_all_questions, get_question
+from questionapi.db import QuestionDB
 
 def test_add_question_returns_question_obj(mocker):
     mock_db_instance = mocker.patch.object(QuestionDB, 'add_question')

@@ -1,6 +1,6 @@
 from pydantic import BaseModel
-from db import QuestionDB
-from models import Question
+from questionapi.db import QuestionDB
+from questionapi.models import Question
 from fastapi import FastAPI
 
 db = QuestionDB()

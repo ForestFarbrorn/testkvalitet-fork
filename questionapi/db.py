@@ -1,5 +1,5 @@
 import sqlite3
-from models import Question
+from questionapi.models import Question
 
 class QuestionDB:
     def __init__(self, filename = 'db.sqlite3') -> None:

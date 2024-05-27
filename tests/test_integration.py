@@ -1,5 +1,5 @@
 import os.path
-from questions import QuestionCreate, add_question, db
+from questionapi.questions import QuestionCreate, add_question, db
 from pytest import fixture
 
 def test_add_question_adds_question_to_db(test_db):

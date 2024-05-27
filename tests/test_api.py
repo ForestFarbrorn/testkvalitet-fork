@@ -1,5 +1,5 @@
 from fastapi.testclient import TestClient
-from questions import app, db
+from questionapi.questions import app, db
 
 client = TestClient(app)
 
