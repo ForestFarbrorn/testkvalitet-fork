@@ -15,7 +15,7 @@ class QuestionCreate(BaseModel):
 def read_root():
     return {"Hello": "World"}
 
-@app.post("/questions/")
+@app.post("/questions/", status_code=201)
 def add_question(question: QuestionCreate):
     """Adds a new question"""
 
@@ -23,7 +23,7 @@ def add_question(question: QuestionCreate):
 
     db.add_question(question=new_question)
 
-    return question
+    return new_question
 
 def get_question(qid):
     """Gets a question for a given id"""

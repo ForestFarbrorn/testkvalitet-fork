@@ -37,4 +37,11 @@ class QuestionDB:
         return Question(qid=row[0], question_text=row[1], answer_text=row[2])
     
     def get_all_questions(self):
-        pass
+        conn = sqlite3.connect(self.filename)
+
+        c = conn.cursor()
+        c.execute('SELECT * FROM questions')
+
+        rows = c.fetchall()
+
+        return [Question(qid=row[0], question_text=row[1], answer_text=row[2]) for row in rows]

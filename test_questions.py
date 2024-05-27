@@ -1,11 +1,11 @@
 from unittest.mock import MagicMock
-from questions import Question, add_question, get_all_questions, get_question
+from questions import Question, QuestionCreate, add_question, get_all_questions, get_question
 from db import QuestionDB
 
 def test_add_question_returns_question_obj(mocker):
     mock_db_instance = mocker.patch.object(QuestionDB, 'add_question')
 
-    new_question = add_question('Sample question')
+    new_question = add_question(QuestionCreate(question_text='Sample question'))
 
     assert isinstance(new_question, Question)
     assert new_question.question_text == 'Sample question'
@@ -14,7 +14,7 @@ def test_add_question_returns_question_obj(mocker):
 def test_add_question_calls_db(mocker):
     mock_db_instance = mocker.patch.object(QuestionDB, 'add_question')
 
-    add_question('Test question')
+    add_question(QuestionCreate(question_text='Test question'))
 
     mock_db_instance.assert_called_once()
 
